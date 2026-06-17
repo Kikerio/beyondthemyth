@@ -1,8 +1,10 @@
-Idea Di Base
+# Beyond The Myth
+
+## Idea di base
 Il progetto nasce dal desiderio di esplorare e mappare la transizione della conoscenza umana, tracciando il passaggio da una visione mistico-astronomica e mitologica del cosmo alla sua codifica puramente scientifica. L'obiettivo è decostruire il mito attraverso la lente dell'astronomia moderna, mostrando come le prime narrazioni celesti non fossero semplici fantasie, ma i tasselli fondamentali ed empirici che hanno anticipato la scienza contemporanea. La piattaforma si propone come un ponte visivo e interattivo per comprendere l'evoluzione del pensiero umano sul cielo.
 
-Contenuti E Struttura
+## Contenuti e struttura
 L'esperienza interattiva si articola attraverso cinque paradigmi storici e concettuali fondamentali. Ogni paradigma è sviluppato verticalmente tramite una timeline strutturata in modo rigoroso, progettata per mostrare l'evoluzione passo dopo passo e il momento esatto in cui la spiegazione scientifica scardina o integra la componente mitica. L'interfaccia utilizzerà uno scroll immersivo che guiderà l'utente lungo questi cinque capitoli, alternando testi esplicativi, microcopy puntuali e visualizzazioni grafiche dei dati celesti.
 
-Target
+## Target
 Il pubblico di riferimento è composto da studenti, appassionati di astronomia e curiosi della scienza che desiderano approfondire le origini storiche e antropologiche delle scoperte spaziali. Si rivolge a utenti che già orbitano attorno al mondo della NASA e dell'esplorazione scientifica, ma che cercano una narrazione più profonda, capace di unire l'immaginario poetico del passato alla precisione scientifica del presente.
