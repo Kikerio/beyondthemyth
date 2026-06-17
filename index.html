@@ -116,8 +116,8 @@
         .cb-tags-empty { color: var(--ink); pointer-events: none; opacity: 0.5; }
 
         .tag-pill { padding: 8px 16px; border: 1px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: var(--sp-sm); font-family: var(--sans); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 300; line-height: 1; white-space: nowrap; height: auto; transition: background-color 0.2s, color 0.2s; }
-        .tag-pill.active, .tag-pill:hover, .p-str-tag:hover { background-color: var(--ink) !important; color: var(--bg) !important; border-color: var(--ink) !important; }
-        .tag-pill.active *, .tag-pill:hover *, .p-str-tag:hover * { color: var(--bg) !important; }
+        .tag-pill.active, .tag-pill:hover { background-color: var(--ink) !important; color: var(--bg) !important; border-color: var(--ink) !important; }
+        .tag-pill.active *, .tag-pill:hover * { color: var(--bg) !important; }
         .tag-pill .pill-x { display: inline-flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; border: none; margin-left: 4px; }
 
         .cb-clear-btn { background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; color: var(--ink); display: none; font-family: var(--sans); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 300; padding: 10px 0; margin-left: var(--sp-sm); white-space: nowrap; }
@@ -146,12 +146,22 @@
             font-family: var(--sans) !important; font-style: normal !important; text-transform: uppercase !important; font-weight: 300 !important; letter-spacing: .1em !important;
         }
 
+        /* TAG ESTERNI SULLA CARD: Sfondo Beige, Testo Nero */
         .p-str-tag {
-            display: inline-flex; align-items: center; justify-content: center; height: auto; padding: 8px 16px; border: 1px solid var(--ink); background-color: var(--bg); color: var(--ink) !important; font-size: 10px !important; border-radius: 0; white-space: nowrap; transition: opacity 0.2s; cursor: pointer; position: relative; z-index: 10;
+            display: inline-flex; align-items: center; justify-content: center; height: auto; 
+            padding: 8px 16px; border: 1px solid var(--ink); background-color: var(--bg); color: var(--ink) !important; 
+            font-size: 10px !important; border-radius: 0; white-space: nowrap; transition: opacity 0.2s; cursor: pointer; position: relative; z-index: 10;
         }
         .p-str-tag:hover { opacity: 0.6; }
 
-        .modal-tag, .modal-tl-tag { color: var(--ink); border-color: var(--line); pointer-events: none; }
+        /* TAG INTERNI (MODAL & TIMELINE): Sfondo Nero, Testo Beige */
+        .modal-tag, .modal-tl-tag { 
+            background-color: var(--ink) !important; 
+            color: var(--bg) !important; 
+            border: 1px solid var(--ink) !important; 
+            pointer-events: none; 
+            display: inline-block; padding: 8px 16px; font-size: 10px;
+        }
 
         .p-strip-cta { position: absolute; right: var(--m); bottom: var(--m); z-index: 3; width: 32px; height: 32px; border: 1px solid var(--ink); background: var(--bg); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 20px; font-weight: 300; color: var(--ink) !important; line-height: 1; pointer-events: none; }
 
@@ -169,7 +179,6 @@
         .modal-body { padding: var(--m); display: flex; flex-direction: column; gap: 0; }
         .modal-meta { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
         .modal-tags { display: flex; flex-wrap: wrap; gap: 12px; } 
-        .modal-tag, .modal-tl-tag { display: inline-block; padding: 8px 16px; border: 1px solid var(--ink); background: transparent; color: var(--ink); font-size: 10px; pointer-events: none; }
 
         .modal-title-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--m); align-items: start; padding: var(--m) 0; border-bottom: 1px solid var(--line); }
         .modal-intro-text { width: 100%; display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
@@ -252,6 +261,7 @@
             .modal-bio-portrait { width: min(320px, 100%); height: auto; min-height: 0; }
             .modal-tl-content { grid-template-columns: 1fr; padding-left: 16px;} 
             .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--m);}
+            .manifesto { grid-template-columns: 1fr; } 
         }
         @media (max-width: 600px) {
             .paradigm-header { height: 200px; }
@@ -260,7 +270,6 @@
             .modal-meta { flex-direction: column; gap: 16px; }
             .footer-grid { grid-template-columns: 1fr; gap: var(--m);}
             .cb-filter-grid { grid-template-columns: 1fr; }
-            .manifesto { grid-template-columns: 1fr; } 
         }
     </style>
 
@@ -479,7 +488,6 @@
                 </div>
             </div>
 
-            <!-- CONTENITORE DINAMICO PER LE FONTI IMMAGINI APA (ACCORDION) -->
             <div id="dynamic-sources-list" style="margin-top: calc(var(--m) * 1.5);">
                 <!-- JS will populate this -->
             </div>
@@ -683,7 +691,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     buildArchive();
 
-    /* ── DYNAMIC IMAGE SOURCES ARCHIVE BUILDER (APA FORMAT) ── */
     function buildSourcesArchive() {
         const container = document.getElementById('dynamic-sources-list');
         if (!container) return;
@@ -696,9 +703,19 @@ document.addEventListener('DOMContentLoaded', function() {
         function createSourceItem(url, caption, context, externalSource, apaCitation) {
             if (!url || addedUrls.has(url)) return '';
             addedUrls.add(url);
-            const linkHref = externalSource ? externalSource : url;
             
-            const citationText = apaCitation ? apaCitation : (caption || 'Archive Image');
+            let linkElement = "";
+            let linkHref = "#";
+            
+            if (!externalSource || externalSource === "Manca il link" || externalSource === "") {
+                linkElement = `<span class="t-ui" style="padding-top: 4px; opacity: 0.5;">MANCA IL LINK</span>`;
+                linkHref = url; 
+            } else {
+                linkHref = externalSource;
+                linkElement = `<a href="${externalSource}" target="_blank" class="t-ui" style="text-decoration: underline; text-underline-offset: 2px; padding-top: 4px;">VAI AL LINK DELL'IMMAGINE ↗</a>`;
+            }
+
+            const citationText = apaCitation && apaCitation !== "Manca il link" ? apaCitation : (caption || 'Archive Image');
 
             return `
                 <div class="source-item" style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 16px;">
@@ -708,7 +725,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 2px;">
                         <span class="t-ui" style="opacity: 0.5;">${context.toUpperCase()}</span>
                         <p class="t-body" style="margin: 0; line-height: 1.4; text-transform: none;">${citationText}</p>
-                        <a href="${linkHref}" target="_blank" class="t-ui" style="text-decoration: underline; text-underline-offset: 2px; padding-top: 4px;">VIEW ORIGINAL ASSET ↗</a>
+                        ${linkElement}
                     </div>
                 </div>
             `;
@@ -774,7 +791,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     buildSourcesArchive();
 
-    /* ── Modals & Interazioni ── */
     function openModal(id) {
         const modal = document.getElementById(id);
         if (!modal) return;
@@ -883,7 +899,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* ── Control Board (Multi-Select & Toggle) ── */
     const CB = {
         search:    document.getElementById('cb-search'),
         era:       document.getElementById('f-era'),
