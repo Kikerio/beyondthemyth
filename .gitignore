@@ -1,0 +1,14 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Files/Cartelle di sistema generici
+Thumbs.db
+ehthumbs.db
+.Trash-*
+
+# Cartelle degli editor di codice (opzionale ma consigliato)
+.vscode/
+.idea/
