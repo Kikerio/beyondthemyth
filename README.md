@@ -29,6 +29,7 @@ Completano l'esperienza una navigazione interna per approfondire le fonti in for
 
 <video src="assets/imgs/beyond_the_myth_video.mov" width="100%" controls></video>
 ![Anteprima Interfaccia Home](assets/imgs/01.png)
+![Dettagli](assets/imgs/05.png)
 ![Dettagli](assets/imgs/02.png)
 ![Dettagli](assets/imgs/04.png)
 
@@ -92,5 +93,3 @@ function resetKioskTimer() {
 ## Target e contesto d’uso
 Il target primario è costituito da studenti universitari, ricercatori, designer e appassionati di astronomia e divulgazione scientifica. Il progetto si rivolge a utenti con un forte interesse per la storia delle idee e per l'evoluzione tecnologica dei sistemi di esplorazione spaziale. Il contesto d'uso nativo è la consultazione web su dispositivi desktop, configurandosi sia come piattaforma di approfondimento didattico individuale, sia come possibile interfaccia interattiva da installare su postazioni e chioschi digitali fisse all'interno di musei della scienza, planetari o mostre temporanee dedicate alle celebrazioni storiche della NASA.
 
-[<img src="doc/munari.jpg" width="300" alt="Riferimento metodologico e ordine visivo di Bruno Munari">]()
-```
